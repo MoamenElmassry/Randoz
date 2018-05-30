@@ -323,11 +323,12 @@ proteins <- sapply(year, search_year, term="Pseudomonas[Organism]", USE.NAMES=FA
 
 x=as.data.frame(cbind(year,proteins))
 
+library(scales)
 library(ggplot2)
 ggplot(x, aes(x=year, y=proteins, label=proteins)) + geom_line(linetype = "dashed") +
    geom_point(shape=19,size=10,col="darkred")  +
    geom_text(color="white", size=2)+scale_x_continuous(breaks = seq(1988, 2020, by = 2))+
-   theme_classic(base_size = 15)+labs(x="Year",y="Number of Proteins")
+   theme_classic(base_size = 15)+labs(x="Year",y="Number of Proteins")+ scale_y_continuous(labels = scientific)
 ```
 
 
